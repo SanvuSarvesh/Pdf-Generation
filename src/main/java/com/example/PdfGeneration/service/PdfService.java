@@ -32,7 +32,6 @@ public class PdfService {
 
             float colWidth = 250f;
             Style style = new Style();
-            style.getMarginLeft();
             style.setMarginLeft(50);
             style.setMarginBottom(50);
             style.setMarginTop(50);
