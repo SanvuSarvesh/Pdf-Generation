@@ -5,21 +5,26 @@ import com.example.PdfGeneration.service.PdfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/pdf/generate")
+@RequestMapping("/")
 public class PdfController {
 
     @Autowired
     private PdfService pdfService;
 
-    @GetMapping
+    @GetMapping("/pdf/generate")
     public ResponseEntity<String> generatePdf(@RequestBody PdfInfo pdfInfo){
         String response = pdfService.generatePdf(pdfInfo);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @RequestMapping
+    public class RootController {
+        @RequestMapping(method = RequestMethod.GET)
+        public String swaggerUi() {
+            return "redirect:/swagger-ui.html";
+        }
     }
 }
