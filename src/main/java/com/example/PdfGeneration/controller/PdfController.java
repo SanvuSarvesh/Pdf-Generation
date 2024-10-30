@@ -20,11 +20,12 @@ public class PdfController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @RequestMapping
-    public class RootController {
-        @RequestMapping(method = RequestMethod.GET)
-        public String swaggerUi() {
-            return "redirect:/swagger-ui.html";
-        }
+
+    @GetMapping
+    public String swaggerUi() {
+        return "redirect:/swagger-ui.html";
     }
+
+
+
 }
